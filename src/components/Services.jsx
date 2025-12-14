@@ -122,7 +122,10 @@ const Services = () => {
               <span className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-cyan-400 to-transparent"></span>
             </h2>
           </div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
+          <p
+            className="text-lg text-gray-100 max-w-3xl mx-auto lg:mx-0 text-center lg:text-left drop-shadow-md"
+            style={{ textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)" }}
+          >
             With 5.8+ years of professional experience, I specialize in creating
             responsive and user-friendly web applications. My passion for coding
             and attention to detail enable me to deliver custom solutions that
@@ -227,12 +230,15 @@ const Services = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 drop-shadow-lg">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                <p
+                  className="text-gray-100 mb-6 leading-relaxed drop-shadow-md"
+                  style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)" }}
+                >
                   {service.description}
                 </p>
 

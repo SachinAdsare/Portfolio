@@ -12,9 +12,14 @@ import SciFiParticles from "./components/SciFiParticles";
 import ScrollHologram from "./components/ScrollHologram";
 import Services from "./components/Services";
 import Skills from "./components/Skills";
+import { useHackerSounds } from "./hooks/useHackerSounds";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(true);
+
+  // Initialize hacker sounds
+  const { toggleSound } = useHackerSounds();
 
   useEffect(() => {
     // Force dark mode for sci-fi theme
@@ -34,13 +39,23 @@ function App() {
     }
   };
 
+  const handleToggleSound = () => {
+    const newState = toggleSound();
+    setSoundEnabled(newState);
+  };
+
   return (
     <div className="min-h-screen relative overflow-x-hidden bg-slate-950">
       <SciFiBackground />
       <Parallax3D />
       <SciFiParticles />
       <ScrollHologram />
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        soundEnabled={soundEnabled}
+        toggleSound={handleToggleSound}
+      />
       <Hero />
       <Services />
       <Developer />

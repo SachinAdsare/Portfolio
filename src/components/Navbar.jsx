@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
-import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import {
+  FiMenu,
+  FiMoon,
+  FiSun,
+  FiVolume2,
+  FiVolumeX,
+  FiX,
+} from "react-icons/fi";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = ({ darkMode, toggleDarkMode, soundEnabled, toggleSound }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -73,6 +80,20 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </a>
             ))}
             <button
+              onClick={toggleSound}
+              className="p-2 rounded-lg bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30 hover:from-cyan-200 hover:to-blue-200 dark:hover:from-cyan-800/40 dark:hover:to-blue-800/40 transition-all duration-200 transform hover:scale-110"
+              aria-label="Toggle sound"
+              title={
+                soundEnabled ? "Mute hacker sounds" : "Enable hacker sounds"
+              }
+            >
+              {soundEnabled ? (
+                <FiVolume2 className="w-5 h-5 text-cyan-500" />
+              ) : (
+                <FiVolumeX className="w-5 h-5 text-gray-500" />
+              )}
+            </button>
+            <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gradient-to-r from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 hover:from-primary-200 hover:to-accent-200 dark:hover:from-primary-800/40 dark:hover:to-accent-800/40 transition-all duration-200 transform hover:scale-110"
               aria-label="Toggle dark mode"
@@ -87,6 +108,17 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
+            <button
+              onClick={toggleSound}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"
+              aria-label="Toggle sound"
+            >
+              {soundEnabled ? (
+                <FiVolume2 className="w-5 h-5 text-cyan-500" />
+              ) : (
+                <FiVolumeX className="w-5 h-5" />
+              )}
+            </button>
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800"

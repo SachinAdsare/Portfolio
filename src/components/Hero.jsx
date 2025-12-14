@@ -42,7 +42,10 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-primary-600 dark:text-primary-400 font-semibold text-lg mb-4"
+              className="text-cyan-300 font-bold text-xl mb-4 drop-shadow-lg"
+              style={{
+                textShadow: "0 0 20px rgba(6, 182, 212, 0.6)",
+              }}
             >
               Hi, I&apos;m
             </motion.p>
@@ -54,15 +57,15 @@ const Hero = () => {
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative"
             >
               <span
-                className="text-white relative z-10"
+                className="text-white relative z-10 drop-shadow-2xl"
                 style={{
                   textShadow:
-                    "0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3)",
+                    "0 0 30px rgba(6, 182, 212, 0.8), 0 0 60px rgba(6, 182, 212, 0.4), 0 4px 8px rgba(0, 0, 0, 0.8)",
                 }}
               >
                 Sachin Adsare
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-2xl -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 blur-3xl -z-10"></div>
             </motion.h1>
 
             <motion.h2
@@ -71,14 +74,14 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6"
             >
-              <span
-                className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent relative"
-                style={{
-                  textShadow: "0 0 30px rgba(6, 182, 212, 0.5)",
-                }}
-              >
-                Senior Software{" "}
-                <span className="text-orange-400">Developer</span>
+              <span className="relative inline-block">
+                <span className="text-cyan-300 drop-shadow-lg font-bold">
+                  Senior Software{" "}
+                </span>
+                <span className="text-orange-400 drop-shadow-lg font-bold">
+                  Developer
+                </span>
+                <span className="absolute inset-0 blur-xl bg-gradient-to-r from-cyan-400/50 to-orange-400/50 -z-10"></span>
               </span>
             </motion.h2>
 
@@ -88,26 +91,31 @@ const Hero = () => {
               transition={{ delay: 0.45 }}
               className="text-lg font-semibold mb-4 relative inline-block"
             >
-              <span className="text-gray-300">Currently at</span>{" "}
-              <span className="text-cyan-400 relative">
+              <span className="text-gray-100 drop-shadow-md">Currently at</span>{" "}
+              <span className="text-cyan-300 relative drop-shadow-md font-bold">
                 Vimo India
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"></span>
               </span>{" "}
-              <span className="text-gray-400">• Since Oct 2024</span>
+              <span className="text-gray-200 drop-shadow-md">
+                • Since Oct 2024
+              </span>
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-lg"
+              style={{
+                textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
             >
               Take your business to the next level with{" "}
-              <span className="font-bold text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text">
+              <span className="font-bold text-cyan-300">
                 custom web development solutions
               </span>
               . Crafting dynamic applications with{" "}
-              <span className="text-cyan-400 font-semibold">5.8+ years</span> of
+              <span className="text-cyan-300 font-bold">5.8+ years</span> of
               experience.
             </motion.p>
 
