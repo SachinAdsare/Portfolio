@@ -45,6 +45,8 @@ export default {
         "slide-in-right": "slideInRight 0.8s ease-out",
         float: "float 3s ease-in-out infinite",
         "gradient-shift": "gradientShift 8s ease infinite",
+        scan: "scan 2s ease-in-out infinite",
+        glow: "glow 2s ease-in-out infinite alternate",
       },
       keyframes: {
         fadeIn: {
@@ -70,6 +72,20 @@ export default {
         gradientShift: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
+        },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        glow: {
+          "0%": { 
+            boxShadow: "0 0 5px currentColor, 0 0 10px currentColor",
+            opacity: "0.8"
+          },
+          "100%": { 
+            boxShadow: "0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor",
+            opacity: "1"
+          },
         },
       },
       backgroundSize: {

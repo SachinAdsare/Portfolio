@@ -102,67 +102,71 @@ const TechCarousel = () => {
   }, [technologies.length]);
 
   return (
-    <div className="relative overflow-hidden py-12">
+    <div className="relative overflow-hidden py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-8"
+        className="text-center mb-12"
       >
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-600 via-accent-500 to-orange-500 bg-clip-text text-transparent">
+        <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 via-accent-500 to-orange-500 bg-clip-text text-transparent">
           Technologies I Work With
         </h3>
       </motion.div>
 
       {/* Sliding Carousel */}
-      <div className="relative h-52 md:h-56 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
+      <div className="relative h-72 md:h-80 flex items-center justify-center overflow-hidden px-4">
+        <div className="relative w-full max-w-7xl h-full flex items-center justify-center mx-auto">
           {technologies.map((tech, index) => {
             const offset =
               (index - currentIndex + technologies.length) %
               technologies.length;
-            const isCenter = offset === 0;
-            const isNear = offset === 1 || offset === technologies.length - 1;
 
-            let translateX = 0;
+            let translateX = "0%";
             let scale = 0.7;
             let opacity = 0.3;
             let zIndex = 0;
 
-            if (isCenter) {
-              translateX = 0;
+            if (offset === 0) {
+              // Center
+              translateX = "0%";
               scale = 1.2;
               opacity = 1;
               zIndex = 30;
             } else if (offset === 1) {
-              translateX = 120;
+              // Right side
+              translateX = "150%";
               scale = 0.9;
-              opacity = 0.6;
+              opacity = 0.7;
               zIndex = 20;
             } else if (offset === technologies.length - 1) {
-              translateX = -120;
+              // Left side
+              translateX = "-150%";
               scale = 0.9;
-              opacity = 0.6;
+              opacity = 0.7;
               zIndex = 20;
             } else if (offset === 2) {
-              translateX = 240;
-              scale = 0.7;
-              opacity = 0.3;
+              // Far right
+              translateX = "280%";
+              scale = 0.75;
+              opacity = 0.4;
               zIndex = 10;
             } else if (offset === technologies.length - 2) {
-              translateX = -240;
-              scale = 0.7;
-              opacity = 0.3;
+              // Far left
+              translateX = "-280%";
+              scale = 0.75;
+              opacity = 0.4;
               zIndex = 10;
             } else {
               opacity = 0;
+              translateX = offset < technologies.length / 2 ? "400%" : "-400%";
             }
 
             return (
               <motion.div
                 key={tech.name}
                 animate={{
-                  x: `${translateX}%`,
+                  x: translateX,
                   scale,
                   opacity,
                   zIndex,
@@ -171,15 +175,18 @@ const TechCarousel = () => {
                   duration: 0.5,
                   ease: "easeInOut",
                 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="absolute"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
               >
                 <div
                   className={`w-36 h-36 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br ${tech.gradient} p-[3px] shadow-2xl hover:shadow-3xl transition-shadow duration-300`}
                 >
-                  <div
-                    className={`w-full h-full bg-gradient-to-br ${tech.bg} rounded-2xl flex flex-col items-center justify-center gap-3 p-4`}
-                  >
-                    <div className="text-5xl md:text-6xl transform transition-transform duration-300 hover:scale-110">
+                  <div className="w-full h-full bg-white dark:bg-gray-900 rounded-2xl flex flex-col items-center justify-center gap-3 p-4">
+                    <div className="text-5xl md:text-6xl transform transition-transform duration-300 hover:scale-110 drop-shadow-lg">
                       {tech.icon}
                     </div>
                     <span className="text-sm md:text-base font-bold text-gray-900 dark:text-white text-center">
@@ -194,7 +201,7 @@ const TechCarousel = () => {
       </div>
 
       {/* Indicators */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="flex justify-center gap-2 mt-16">
         {technologies.map((_, index) => (
           <button
             key={index}

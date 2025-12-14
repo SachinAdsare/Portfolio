@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
+import SciFiParticles from "./components/SciFiParticles";
 import Services from "./components/Services";
 import Skills from "./components/Skills";
 
@@ -37,7 +38,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <SciFiParticles />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
       <Services />

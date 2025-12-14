@@ -215,7 +215,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-16"
+          className="mt-20"
         >
           <TechCarousel />
         </motion.div>
@@ -226,7 +226,7 @@ const Skills = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-16"
+          className="mt-12"
         >
           <ImageSlider />
         </motion.div>
