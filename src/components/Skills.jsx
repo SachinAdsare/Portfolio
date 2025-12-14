@@ -101,14 +101,11 @@ const Skills = () => {
   };
 
   return (
-    <section
-      id="skills"
-      className="section-padding bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-blue-900/10 relative overflow-hidden"
-    >
+    <section id="skills" className="holographic-section section-padding">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 right-10 w-72 h-72 bg-accent-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
       <div className="section-container relative z-10">
@@ -119,9 +116,18 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Skills & Expertise</h2>
-          <p className="section-subtitle">
-            Comprehensive technical skill set built over 5.8+ years of
+          <div className="flex items-center gap-3 mb-4 justify-center">
+            <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl border border-cyan-400/30 shadow-lg shadow-cyan-500/20">
+              <FiCode className="w-6 h-6 text-cyan-400" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent relative">
+              Skills & Expertise
+              <span className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-cyan-400 to-transparent"></span>
+            </h2>
+          </div>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+            Comprehensive technical skill set built over{" "}
+            <span className="text-cyan-400 font-semibold">5.8+ years</span> of
             professional software development
           </p>
         </motion.div>
@@ -137,39 +143,48 @@ const Skills = () => {
             <motion.div
               key={categoryIndex}
               variants={itemVariants}
-              className="card p-6"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative rounded-2xl overflow-hidden group"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 text-primary-600 dark:text-primary-400 rounded-lg transform hover:scale-110 transition-transform duration-200">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-primary-600 dark:from-white dark:to-accent-400 bg-clip-text text-transparent">
-                  {category.title}
-                </h3>
+              {/* Neon glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 opacity-30 blur-lg group-hover:blur-xl transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 p-[2px] rounded-2xl">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scan"></div>
               </div>
 
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: skillIndex * 0.1 }}
-                        className="bg-gradient-to-r from-primary-500 via-accent-500 to-orange-500 h-2 rounded-full"
-                      />
-                    </div>
+              <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-2xl p-6 border border-cyan-400/10 group-hover:border-cyan-400/30 transition-colors duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 text-primary-600 dark:text-primary-400 rounded-lg transform hover:scale-110 transition-transform duration-200">
+                    {category.icon}
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-primary-600 dark:from-white dark:to-accent-400 bg-clip-text text-transparent">
+                    {category.title}
+                  </h3>
+                </div>
+
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-700 dark:text-gray-300 font-medium">
+                          {skill.name}
+                        </span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: skillIndex * 0.1 }}
+                          className="bg-gradient-to-r from-primary-500 via-accent-500 to-orange-500 h-2 rounded-full"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

@@ -55,15 +55,12 @@ const About = () => {
   ];
 
   return (
-    <section
-      id="about"
-      className="section-padding bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 dark:from-gray-800 dark:via-blue-900/10 dark:to-purple-900/10 relative overflow-hidden"
-    >
+    <section id="about" className="holographic-section section-padding">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-32 right-32 w-96 h-96 bg-success-500/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-32 right-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div
-          className="absolute bottom-32 left-32 w-72 h-72 bg-primary-400/10 rounded-full blur-3xl animate-float"
+          className="absolute bottom-32 left-32 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
@@ -76,10 +73,19 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">About Me</h2>
-          <p className="section-subtitle">
-            My journey, passion, and commitment to excellence in software
-            development
+          <div className="flex items-center gap-3 mb-4 justify-center">
+            <div className="p-3 bg-gradient-to-br from-green-500/20 to-cyan-500/20 rounded-xl border border-green-400/30 shadow-lg shadow-green-500/20">
+              <FiBriefcase className="w-6 h-6 text-green-400" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent relative">
+              About Me
+              <span className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-green-400 to-transparent"></span>
+            </h2>
+          </div>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+            My journey,{" "}
+            <span className="text-cyan-400 font-semibold">passion</span>, and
+            commitment to excellence in software development
           </p>
         </motion.div>
 
@@ -186,19 +192,26 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card p-6 bg-gradient-to-br from-white to-primary-50 dark:from-gray-800 dark:to-primary-900/20 border-2 border-transparent hover:border-primary-300 dark:hover:border-primary-700"
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="relative rounded-2xl overflow-hidden group"
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 text-primary-600 dark:text-primary-400 rounded-lg flex-shrink-0 transform hover:scale-110 transition-transform duration-200">
-                    {highlight.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-2">
-                      {highlight.title}
-                    </h4>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {highlight.description}
-                    </p>
+                {/* Neon border */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-cyan-600 opacity-30 blur-lg group-hover:blur-xl transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-cyan-600 p-[2px] rounded-2xl"></div>
+
+                <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-2xl p-6 border border-green-400/10 group-hover:border-green-400/30 transition-colors duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-900/30 text-primary-600 dark:text-primary-400 rounded-lg flex-shrink-0 transform hover:scale-110 transition-transform duration-200">
+                      {highlight.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent mb-2">
+                        {highlight.title}
+                      </h4>
+                      <p className="text-gray-700 dark:text-gray-300">
+                        {highlight.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>

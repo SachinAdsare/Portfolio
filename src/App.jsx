@@ -5,8 +5,11 @@ import Developer from "./components/Developer";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Parallax3D from "./components/Parallax3D";
 import Projects from "./components/Projects";
+import SciFiBackground from "./components/SciFiBackground";
 import SciFiParticles from "./components/SciFiParticles";
+import ScrollHologram from "./components/ScrollHologram";
 import Services from "./components/Services";
 import Skills from "./components/Skills";
 
@@ -14,16 +17,10 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
+    // Force dark mode for sci-fi theme
+    setDarkMode(true);
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
   }, []);
 
   const toggleDarkMode = () => {
@@ -38,8 +35,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-x-hidden bg-slate-950">
+      <SciFiBackground />
+      <Parallax3D />
       <SciFiParticles />
+      <ScrollHologram />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
       <Services />

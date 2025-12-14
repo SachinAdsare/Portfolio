@@ -9,11 +9,11 @@ const Developer = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-blue-900/10 relative overflow-hidden">
+    <section className="holographic-section section-padding">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
       <div className="section-container relative z-10">
@@ -45,13 +45,15 @@ const Developer = () => {
                     </div>
                     <div className="flex gap-2 ml-4">
                       <span className="text-blue-400">name:</span>
-                      <span className="text-green-400">'Sachin Adsare'</span>
+                      <span className="text-green-400">
+                        &apos;Sachin Adsare&apos;
+                      </span>
                       <span className="text-white">,</span>
                     </div>
                     <div className="flex gap-2 ml-4">
                       <span className="text-blue-400">role:</span>
                       <span className="text-green-400">
-                        'Full Stack Developer'
+                        &apos;Full Stack Developer&apos;
                       </span>
                       <span className="text-white">,</span>
                     </div>
@@ -60,15 +62,21 @@ const Developer = () => {
                       <span className="text-white">[</span>
                     </div>
                     <div className="flex gap-2 ml-8">
-                      <span className="text-green-400">'React'</span>
+                      <span className="text-green-400">&apos;React&apos;</span>
                       <span className="text-white">,</span>
-                      <span className="text-green-400">'TypeScript'</span>
+                      <span className="text-green-400">
+                        &apos;TypeScript&apos;
+                      </span>
                       <span className="text-white">,</span>
                     </div>
                     <div className="flex gap-2 ml-8">
-                      <span className="text-green-400">'Node.js'</span>
+                      <span className="text-green-400">
+                        &apos;Node.js&apos;
+                      </span>
                       <span className="text-white">,</span>
-                      <span className="text-green-400">'Next.js'</span>
+                      <span className="text-green-400">
+                        &apos;Next.js&apos;
+                      </span>
                     </div>
                     <div className="flex gap-2 ml-4">
                       <span className="text-white">],</span>
@@ -76,7 +84,7 @@ const Developer = () => {
                     <div className="flex gap-2 ml-4">
                       <span className="text-blue-400">passion:</span>
                       <span className="text-green-400">
-                        'Building Amazing Apps'
+                        &apos;Building Amazing Apps&apos;
                       </span>
                     </div>
                     <div className="flex gap-2">

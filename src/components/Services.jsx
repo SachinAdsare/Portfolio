@@ -88,25 +88,23 @@ const Services = () => {
   };
 
   return (
-    <section
-      id="services"
-      className="section-padding relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(180deg, rgba(10, 14, 39, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%)',
-      }}
-    >
-      {/* Hexagon pattern background */}
-      <div className="absolute inset-0 opacity-10"
+    <section id="services" className="holographic-section section-padding">
+      {/* Hexagon pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%233b82f6' stroke-width='1'/%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%2306b6d4' stroke-width='1'/%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
         }}
       ></div>
-      
+
       {/* Glowing orbs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      
+      <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div
+        className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: "1s" }}
+      ></div>
+
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -148,11 +146,15 @@ const Services = () => {
               className={`group relative rounded-2xl overflow-hidden`}
             >
               {/* Neon border glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-75 blur-xl group-hover:blur-2xl transition-all duration-500`}></div>
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} p-[2px] rounded-2xl`}>
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-75 blur-xl group-hover:blur-2xl transition-all duration-500`}
+              ></div>
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} p-[2px] rounded-2xl`}
+              >
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-scan"></div>
               </div>
-              
+
               {/* Holographic grid overlay */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
@@ -172,34 +174,55 @@ const Services = () => {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-20 blur-2xl group-hover:opacity-50 animate-pulse transition-opacity duration-300`}
                   ></div>
-                  
+
                   {/* Icon border */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-30 rounded-2xl`}></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-30 rounded-2xl`}
+                  ></div>
                   <div className="absolute inset-[2px] bg-slate-800/80 rounded-2xl"></div>
 
                   {/* Icon */}
-                  <div className={`relative text-5xl`} style={{
-                    filter: 'drop-shadow(0 0 8px currentColor)',
-                  }}>
+                  <div
+                    className={`relative text-5xl`}
+                    style={{
+                      filter: "drop-shadow(0 0 8px currentColor)",
+                    }}
+                  >
                     {service.icon}
                   </div>
 
                   {/* Corner accents - cyberpunk style */}
                   <div className="absolute top-0 left-0 w-4 h-4">
-                    <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${service.gradient}`}></div>
-                    <div className={`absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b ${service.gradient}`}></div>
+                    <div
+                      className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r ${service.gradient}`}
+                    ></div>
+                    <div
+                      className={`absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b ${service.gradient}`}
+                    ></div>
                   </div>
                   <div className="absolute top-0 right-0 w-4 h-4">
-                    <div className={`absolute top-0 right-0 w-full h-[2px] bg-gradient-to-l ${service.gradient}`}></div>
-                    <div className={`absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b ${service.gradient}`}></div>
+                    <div
+                      className={`absolute top-0 right-0 w-full h-[2px] bg-gradient-to-l ${service.gradient}`}
+                    ></div>
+                    <div
+                      className={`absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b ${service.gradient}`}
+                    ></div>
                   </div>
                   <div className="absolute bottom-0 left-0 w-4 h-4">
-                    <div className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r ${service.gradient}`}></div>
-                    <div className={`absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-t ${service.gradient}`}></div>
+                    <div
+                      className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r ${service.gradient}`}
+                    ></div>
+                    <div
+                      className={`absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-t ${service.gradient}`}
+                    ></div>
                   </div>
                   <div className="absolute bottom-0 right-0 w-4 h-4">
-                    <div className={`absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l ${service.gradient}`}></div>
-                    <div className={`absolute bottom-0 right-0 w-[2px] h-full bg-gradient-to-t ${service.gradient}`}></div>
+                    <div
+                      className={`absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l ${service.gradient}`}
+                    ></div>
+                    <div
+                      className={`absolute bottom-0 right-0 w-[2px] h-full bg-gradient-to-t ${service.gradient}`}
+                    ></div>
                   </div>
                 </div>
 
@@ -220,7 +243,9 @@ const Services = () => {
                 >
                   <span className="relative">
                     Learn More
-                    <span className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r ${service.gradient} group-hover/link:w-full transition-all duration-300`}></span>
+                    <span
+                      className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r ${service.gradient} group-hover/link:w-full transition-all duration-300`}
+                    ></span>
                   </span>
                   <span className="transform group-hover/link:translate-x-1 transition-transform duration-200">
                     →

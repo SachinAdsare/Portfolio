@@ -2,16 +2,6 @@ import { motion } from "framer-motion";
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 const Hero = () => {
-  const scrollToProjects = () => {
-    const element = document.querySelector("#projects");
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-  };
-
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -25,17 +15,17 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20"
+      className="holographic-section min-h-screen flex items-center justify-center pt-20"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-400/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl animate-float"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute top-1/2 left-1/2 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl animate-float"
+          className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
@@ -54,16 +44,25 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-primary-600 dark:text-primary-400 font-semibold text-lg mb-4"
             >
-              Hi, I'm
+              Hi, I&apos;m
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 relative"
             >
-              Sachin Adsare
+              <span
+                className="text-white relative z-10"
+                style={{
+                  textShadow:
+                    "0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3)",
+                }}
+              >
+                Sachin Adsare
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-2xl -z-10"></div>
             </motion.h1>
 
             <motion.h2
@@ -72,8 +71,14 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6"
             >
-              <span className="bg-gradient-to-r from-primary-600 via-accent-500 to-orange-500 bg-clip-text text-transparent">
-                Senior Software Developer
+              <span
+                className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent relative"
+                style={{
+                  textShadow: "0 0 30px rgba(6, 182, 212, 0.5)",
+                }}
+              >
+                Senior Software{" "}
+                <span className="text-orange-400">Developer</span>
               </span>
             </motion.h2>
 
@@ -81,26 +86,29 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
-              className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4"
+              className="text-lg font-semibold mb-4 relative inline-block"
             >
-              Currently at{" "}
-              <span className="text-primary-600 dark:text-primary-400">
+              <span className="text-gray-300">Currently at</span>{" "}
+              <span className="text-cyan-400 relative">
                 Vimo India
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500"></span>
               </span>{" "}
-              • Since Oct 2024
+              <span className="text-gray-400">• Since Oct 2024</span>
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               Take your business to the next level with{" "}
-              <span className="font-bold text-primary-600 dark:text-primary-400">
+              <span className="font-bold text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text">
                 custom web development solutions
               </span>
-              . Crafting dynamic applications with 5.8+ years of experience.
+              . Crafting dynamic applications with{" "}
+              <span className="text-cyan-400 font-semibold">5.8+ years</span> of
+              experience.
             </motion.p>
 
             {/* CTA Buttons */}

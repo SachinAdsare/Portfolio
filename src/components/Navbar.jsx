@@ -42,7 +42,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg"
+          ? "bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-cyan-500/10 border-b border-cyan-500/20"
           : "bg-transparent"
       }`}
     >
@@ -66,9 +66,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className="text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-primary-600 hover:to-accent-500 hover:bg-clip-text hover:text-transparent transition-all duration-200 font-medium transform hover:scale-110"
+                className="text-gray-300 hover:text-cyan-400 transition-all duration-200 font-medium transform hover:scale-110 relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
             <button

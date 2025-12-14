@@ -82,15 +82,12 @@ const Contact = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      className="section-padding bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-900 dark:via-purple-900/10 dark:to-orange-900/10 relative overflow-hidden"
-    >
+    <section id="contact" className="holographic-section section-padding">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-16 left-16 w-64 h-64 bg-accent-400/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-16 left-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div
-          className="absolute bottom-16 right-16 w-80 h-80 bg-orange-400/10 rounded-full blur-3xl animate-float"
+          className="absolute bottom-16 right-16 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "1s" }}
         ></div>
       </div>
@@ -103,9 +100,18 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            Let's collaborate on your next project or discuss opportunities
+          <div className="flex items-center gap-3 mb-4 justify-center">
+            <div className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl border border-blue-400/30 shadow-lg shadow-blue-500/20">
+              <FiMail className="w-6 h-6 text-blue-400" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent relative">
+              Get In Touch
+              <span className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-blue-400 to-transparent"></span>
+            </h2>
+          </div>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+            Let&apos;s collaborate on your next project or discuss{" "}
+            <span className="text-blue-400 font-semibold">opportunities</span>
           </p>
         </motion.div>
 
@@ -190,13 +196,13 @@ const Contact = () => {
               className="mt-8 p-6 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 rounded-xl"
             >
               <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Let's Work Together
+                Let&apos;s Work Together
               </h4>
               <p className="text-gray-700 dark:text-gray-300">
-                I'm passionate about taking on new challenges and collaborating
-                on innovative projects. Whether you need a full-stack developer,
-                technical consultant, or want to discuss your next big idea, I'd
-                love to hear from you!
+                I&apos;m passionate about taking on new challenges and
+                collaborating on innovative projects. Whether you need a
+                full-stack developer, technical consultant, or want to discuss
+                your next big idea, I&apos;d love to hear from you!
               </p>
             </motion.div>
           </motion.div>
@@ -207,103 +213,109 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="card p-8"
+            className="relative rounded-2xl overflow-hidden group"
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Send Me a Message
-            </h3>
+            {/* Holographic border */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 opacity-50 blur-lg group-hover:blur-xl transition-all duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 p-[2px] rounded-2xl"></div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            <div className="relative bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-2xl p-8 border border-blue-400/10">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Send Me a Message
+              </h3>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-cyan-400/30 bg-slate-800/50 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all duration-200 placeholder-gray-500"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-cyan-400/30 bg-slate-800/50 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all duration-200 placeholder-gray-500"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-cyan-400/30 bg-slate-800/50 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all duration-200 placeholder-gray-500"
+                    placeholder="Project Inquiry"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="5"
+                    className="w-full px-4 py-3 rounded-lg border border-cyan-400/30 bg-slate-800/50 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-400 transition-all duration-200 resize-none placeholder-gray-500"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full btn-primary flex items-center justify-center gap-2"
                 >
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                  placeholder="John Doe"
-                />
-              </div>
+                  <FiSend className="w-5 h-5" />
+                  Send Message
+                </button>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Your Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Project Inquiry"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="5"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full btn-primary flex items-center justify-center gap-2"
-              >
-                <FiSend className="w-5 h-5" />
-                Send Message
-              </button>
-
-              {formStatus && (
-                <p className="text-center text-primary-600 dark:text-primary-400 font-medium">
-                  {formStatus}
-                </p>
-              )}
-            </form>
+                {formStatus && (
+                  <p className="text-center text-primary-600 dark:text-primary-400 font-medium">
+                    {formStatus}
+                  </p>
+                )}
+              </form>
+            </div>
           </motion.div>
         </div>
       </div>
