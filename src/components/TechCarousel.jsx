@@ -1,47 +1,93 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import {
+  SiExpress,
+  SiJavascript,
+  SiJest,
+  SiMongodb,
+  SiMui,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiRedux,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 
 const TechCarousel = () => {
   const technologies = [
     {
       name: "React",
-      gradient: "from-blue-400 to-cyan-400",
-      icon: "⚛️",
+      gradient: "from-cyan-400 to-blue-500",
+      icon: <SiReact className="text-cyan-400" />,
+      bg: "from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20",
     },
     {
       name: "TypeScript",
       gradient: "from-blue-500 to-blue-700",
-      icon: "📘",
+      icon: <SiTypescript className="text-blue-600" />,
+      bg: "from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/30",
     },
     {
       name: "Node.js",
       gradient: "from-green-400 to-emerald-600",
-      icon: "🟢",
+      icon: <SiNodedotjs className="text-green-600" />,
+      bg: "from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20",
     },
     {
       name: "TailwindCSS",
-      gradient: "from-cyan-400 to-blue-500",
-      icon: "🎨",
+      gradient: "from-cyan-400 to-teal-500",
+      icon: <SiTailwindcss className="text-cyan-500" />,
+      bg: "from-cyan-50 to-teal-50 dark:from-cyan-900/20 dark:to-teal-900/20",
     },
     {
       name: "Redux",
       gradient: "from-purple-500 to-indigo-600",
-      icon: "🔄",
+      icon: <SiRedux className="text-purple-600" />,
+      bg: "from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20",
     },
     {
       name: "Next.js",
-      gradient: "from-gray-700 to-black",
-      icon: "▲",
+      gradient: "from-gray-700 to-gray-900",
+      icon: <SiNextdotjs className="text-gray-900 dark:text-white" />,
+      bg: "from-gray-100 to-gray-200 dark:from-gray-800/50 dark:to-gray-900/50",
     },
     {
       name: "Material UI",
       gradient: "from-blue-600 to-indigo-700",
-      icon: "🎭",
+      icon: <SiMui className="text-blue-600" />,
+      bg: "from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20",
     },
     {
       name: "Jest",
       gradient: "from-red-500 to-orange-500",
-      icon: "🃏",
+      icon: <SiJest className="text-red-600" />,
+      bg: "from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20",
+    },
+    {
+      name: "JavaScript",
+      gradient: "from-yellow-400 to-yellow-600",
+      icon: <SiJavascript className="text-yellow-500" />,
+      bg: "from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-900/30",
+    },
+    {
+      name: "PostgreSQL",
+      gradient: "from-blue-400 to-blue-600",
+      icon: <SiPostgresql className="text-blue-700" />,
+      bg: "from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/30",
+    },
+    {
+      name: "MongoDB",
+      gradient: "from-green-500 to-green-700",
+      icon: <SiMongodb className="text-green-600" />,
+      bg: "from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/30",
+    },
+    {
+      name: "Express.js",
+      gradient: "from-gray-600 to-gray-800",
+      icon: <SiExpress className="text-gray-700 dark:text-gray-300" />,
+      bg: "from-gray-100 to-gray-200 dark:from-gray-800/50 dark:to-gray-900/50",
     },
   ];
 
@@ -50,7 +96,7 @@ const TechCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % technologies.length);
-    }, 3000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, [technologies.length]);
@@ -69,7 +115,7 @@ const TechCarousel = () => {
       </motion.div>
 
       {/* Sliding Carousel */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-52 md:h-56 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           {technologies.map((tech, index) => {
             const offset =
@@ -128,11 +174,15 @@ const TechCarousel = () => {
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               >
                 <div
-                  className={`w-32 h-32 rounded-2xl bg-gradient-to-br ${tech.gradient} p-1 shadow-2xl`}
+                  className={`w-36 h-36 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br ${tech.gradient} p-[3px] shadow-2xl hover:shadow-3xl transition-shadow duration-300`}
                 >
-                  <div className="w-full h-full bg-white dark:bg-gray-800 rounded-2xl flex flex-col items-center justify-center">
-                    <span className="text-4xl mb-2">{tech.icon}</span>
-                    <span className="text-sm font-bold text-gray-900 dark:text-white">
+                  <div
+                    className={`w-full h-full bg-gradient-to-br ${tech.bg} rounded-2xl flex flex-col items-center justify-center gap-3 p-4`}
+                  >
+                    <div className="text-5xl md:text-6xl transform transition-transform duration-300 hover:scale-110">
+                      {tech.icon}
+                    </div>
+                    <span className="text-sm md:text-base font-bold text-gray-900 dark:text-white text-center">
                       {tech.name}
                     </span>
                   </div>
